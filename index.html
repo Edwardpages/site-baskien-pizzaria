@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baskien pizzaria</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Sticky Glassmorphism Navigation -->
+    <header class="sticky-nav">
+        <nav class="glass-nav">
+            <div class="logo">Baskien pizzaria</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#services">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-bg" style="background-image:url('https://loremflickr.com/1600/900/pizza');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome to Baskien pizzaria</h1>
+            <p>Authentic pizza crafted with passion.</p>
+            <div class="hero-buttons">
+                <a href="#booking" class="pill-button">Book a Table</a>
+                <a href="#services" class="pill-button">View Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Menu Section -->
+    <section id="services" class="services-section">
+        <h2>Our Pizza Selection</h2>
+        <div class="services-grid">
+            <article class="service-card">
+                <img src="https://loremflickr.com/400/280/pizza" alt="Classic Margherita">
+                <h3>Classic Margherita</h3>
+                <p>Fresh tomato sauce, mozzarella, and basil.</p>
+                <p class="price">£9.99</p>
+            </article>
+            <article class="service-card">
+                <img src="https://loremflickr.com/400/280/pizza" alt="Pepperoni Delight">
+                <h3>Pepperoni Delight</h3>
+                <p>Spicy pepperoni, mozzarella, and tomato base.</p>
+                <p class="price">£11.99</p>
+            </article>
+            <article class="service-card">
+                <img src="https://loremflickr.com/400/280/pizza" alt="Vegetarian Supreme">
+                <h3>Vegetarian Supreme</h3>
+                <p>Mixed veg, olives, and mozzarella.</p>
+                <p class="price">£10.99</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>At Baskien pizzaria we believe in the art of pizza making. Our dough is hand‑stretched, our sauces are simmered for hours, and our toppings are sourced from local farms. Whether you’re after a quick slice or a family feast, we’ve got you covered.</p>
+                <p>Come and experience the warmth of our wood‑fired ovens and the friendly atmosphere that makes every visit special.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://loremflickr.com/700/500/pizza" alt="Pizza oven">
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking / Appointments Section -->
+    <section id="booking" class="booking-section">
+        <h2>Reserve Your Table</h2>
+        <form class="booking-form">
+            <label>
+                Name
+                <input type="text" name="name" placeholder="Your full name" required>
+            </label>
+            <label>
+                Email
+                <input type="email" name="email" placeholder="you@example.com" required>
+            </label>
+            <label>
+                Phone
+                <input type="tel" name="phone" placeholder="01234 567890">
+            </label>
+            <label>
+                Date
+                <input type="date" name="date" required>
+            </label>
+            <label>
+                Time
+                <input type="time" name="time" required>
+            </label>
+            <label>
+                Guests
+                <input type="number" name="guests" min="1" max="20" placeholder="Number of guests" required>
+            </label>
+            <button type="submit">Book Now</button>
+        </form>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <h2>Photo Gallery</h2>
+        <div class="gallery-grid">
+            <img src="https://loremflickr.com/600/400/pizza" alt="Gallery image 1">
+            <img src="https://loremflickr.com/600/400/pizza" alt="Gallery image 2">
+            <img src="https://loremflickr.com/600/400/pizza" alt="Gallery image 3">
+            <img src="https://loremflickr.com/600/400/pizza" alt="Gallery image 4">
+            <img src="https://loremflickr.com/600/400/pizza" alt="Gallery image 5">
+            <img src="https://loremflickr.com/600/400/pizza" alt="Gallery image 6">
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <dl>
+            <dt>Do you offer gluten‑free crust?</dt>
+            <dd>Yes, we have a gluten‑free option available on request.</dd>
+
+            <dt>Can I order for delivery?</dt>
+            <dd>We partner with local delivery services. Please call us for details.</dd>
+
+            <dt>What are your opening hours?</dt>
+            <dd>Monday‑Thursday: 12pm – 10pm<br>Friday‑Saturday: 12pm – 11pm<br>Sunday: 2pm – 9pm</dd>
+        </dl>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonials-grid">
+            <article class="testimonial-card">
+                <p>“The Margherita is the best I’ve ever tasted – simple yet perfect.”</p>
+                <cite>– Emma R.</cite>
+            </article>
+            <article class="testimonial-card">
+                <p>“A wonderful family night out. The staff are friendly and the pizza is superb.”</p>
+                <cite>– James T.</cite>
+            </article>
+            <article class="testimonial-card">
+                <p>“I love the wood‑fired flavour – it’s authentic and delicious.”</p>
+                <cite>– Priya S.</cite>
+            </article>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup Section -->
+    <section id="newsletter" class="newsletter-section">
+        <h2>Stay Updated</h2>
+        <form class="newsletter-form">
+            <label>
+                Email address
+                <input type="email" name="newsletter-email" placeholder="you@example.com" required>
+            </label>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Map & Directions Section -->
+    <section id="map" class="map-section">
+        <h2>Find Us</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d0!3d0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z0JzQvtC70YzQutC40Lkg0L7QsdC70LjRjw!5e0!3m2!1sen!2suk!4v1" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <!-- Pricing Table Section -->
+    <section id="pricing" class="pricing-section">
+        <h2>Pricing</h2>
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th>Pizza</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Classic Margherita</td>
+                    <td>Small (30cm)</td>
+                    <td>£9.99</td>
+                </tr>
+                <tr>
+                    <td>Classic Margherita</td>
+                    <td>Large (40cm)</td>
+                    <td>£12.99</td>
+                </tr>
+                <tr>
+                    <td>Pepperoni Delight</td>
+                    <td>Small (30cm)</td>
+                    <td>£11.99</td>
+                </tr>
+                <tr>
+                    <td>Pepperoni Delight</td>
+                    <td>Large (40cm)</td>
+                    <td>£14.99</td>
+                </tr>
+                <tr>
+                    <td>Vegetarian Supreme</td>
+                    <td>Large (40cm)</td>
+                    <td>£13.99</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Team / Staff Profiles Section -->
+    <section id="team" class="team-section">
+        <h2>Meet Our Team</h2>
+        <div class="team-grid">
+            <article class="team-member">
+                <img src="https://loremflickr.com/300/300/pizza" alt="Head Chef">
+                <h3>Marco Rossi</h3>
+                <p>Head Chef – 15 years of pizza mastery.</p>
+            </article>
+            <article class="team-member">
+                <img src="https://loremflickr.com/300/300/pizza" alt="Manager">
+                <h3>Sophie Bennett</h3>
+                <p>Manager – Ensuring every guest feels welcome.</p>
+            </article>
+            <article class="team-member">
+                <img src="https://loremflickr.com/300/300/pizza" alt="Server">
+                <h3>Luke Patel</h3>
+                <p>Senior Server – Passionate about great service.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Blog / News Section -->
+    <section id="blog" class="blog-section">
+        <h2>Latest News</h2>
+        <div class="blog-grid">
+            <article class="blog-post">
+                <h3>New Seasonal Pizza Launch</h3>
+                <p>We’re excited to introduce a limited‑time summer pizza featuring fresh tomatoes, basil, and mozzarella.</p>
+                <a href="#" class="read-more">Read more</a>
+            </article>
+            <article class="blog-post">
+                <h3>Behind the Scenes: Our Wood‑Fired Oven</h3>
+                <p>Discover how our traditional oven gives each pizza its distinctive flavour.</p>
+                <a href="#" class="read-more">Read more</a>
+            </article>
+            <article class="blog-post">
+                <h3>Community Events</h3>
+                <p>Join us for a charity night this month – a portion of all sales will support local shelters.</p>
+                <a href="#" class="read-more">Read more</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- Promotions / Special Offers Section -->
+    <section id="promotions" class="promotions-section">
+        <h2>Special Offers</h2>
+        <ul class="offers-list">
+            <li>Buy One Get One Free – Classic Margherita (Every Tuesday)</li>
+            <li>Family Feast – 2 Large Pizzas + 4 Drinks for £29.99</li>
+            <li>Student Discount – 10% off with valid ID</li>
+        </ul>
+    </section>
+
+    <!-- Opening Hours Section -->
+    <section id="hours" class="hours-section">
+        <h2>Opening Hours</h2>
+        <table class="hours-table">
+            <tbody>
+                <tr><td>Monday – Thursday</td><td>12:00 – 22:00</td></tr>
+                <tr><td>Friday – Saturday</td><td>12:00 – 23:00</td></tr>
+                <tr><td>Sunday</td><td>14:00 – 21:00</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Embedded YouTube Channel -->
+    <section id="youtube" class="youtube-section">
+        <h2>Our YouTube Channel</h2>
+        <iframe width="100%" height="480" src="https://www.youtube.com/embed?listType=user_uploads&list=user-oh7ui8go9z" title="Baskien pizzaria YouTube videos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Get In Touch</h2>
+        <div class="contact-grid">
+            <form class="contact-form">
+                <label>
+                    Name
+                    <input type="text" name="contact-name" placeholder="Your name" required>
+                </label>
+                <label>
+                    Email
+                    <input type="email" name="contact-email" placeholder="you@example.com" required>
+                </label>
+                <label>
+                    Subject
+                    <input type="text" name="contact-subject" placeholder="Subject" required>
+                </label>
+                <label>
+                    Message
+                    <textarea name="contact-message" placeholder="Your message" rows="5" required></textarea>
+                </label>
+                <button type="submit">Send Message</button>
+            </form>
+            <div class="contact-details">
+                <p><strong>Phone:</strong> 01234 567890</p>
+                <p><strong>Email:</strong> info@baskienpizzaria.co.uk</p>
+                <p><strong>Address:</strong> 12 Pizza Lane, Foodtown, FT1 2AB</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>About Us</h3>
+                <p>Family‑run pizzeria delivering authentic flavours since day one.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#services">Menu</a></li>
+                    <li><a href="#booking">Booking</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <ul class="social-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-copy">&copy; 2026 Baskien pizzaria. All rights reserved.</p>
+    </footer>
+</body>
+</html>
