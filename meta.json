@@ -1,0 +1,11 @@
+{
+  "business": "Baskien pizzaria",
+  "type": "Pizza restaurant",
+  "slug": "baskien-pizzaria",
+  "files": [
+    "index.html",
+    "style.css",
+    "script.js"
+  ],
+  "model": "llama-3.3-70b-versatile"
+}
