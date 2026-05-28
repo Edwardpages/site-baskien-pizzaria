@@ -14,8 +14,9 @@
   "founded_year": "",
   "owner_name": "",
   "logo_text": "",
-  "extra_notes": "",
-  "client_notes": "add an embeded youtube window to play the videos from this channel : https://www.youtube.com/@user-oh7ui8go9z",
+  "extra_notes": "This is an authentic Italian pizza restaurant. High quality ingredients, wood-fired oven.",
+  "client_notes": "Add an embedded YouTube video player with this video: https://www.youtube.com/watch?v=sRQ4Y90WSc4",
+  "style_preset": "",
   "site_features": [
     "Booking / Appointments",
     "Photo Gallery",
@@ -32,5 +33,5 @@
   ],
   "site_language": "English (UK)",
   "inspiration_urls": [],
-  "generated_at": "2026-05-28T07:41:52.921577Z"
+  "generated_at": "2026-05-28T09:53:28.120003Z"
 }
