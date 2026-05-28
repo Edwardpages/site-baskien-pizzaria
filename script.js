@@ -1,7 +1,7 @@
-/* script.js – vanilla implementation of all requested interactive features */
+/* script.js – vanilla implementation of all required interactive features */
 
 document.addEventListener('DOMContentLoaded', () => {
-  /* ---------- 1. Smooth scrolling for internal anchors ---------- */
+  /* ---------- 1. Smooth scrolling for internal links ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       const targetId = anchor.getAttribute('href').slice(1);
@@ -13,50 +13,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- 2. Reveal on scroll (IntersectionObserver) ---------- */
-  const revealElements = document.querySelectorAll('.reveal');
-  if (revealElements.length) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          // staggered delay based on element's index in the NodeList
-          const index = Array.from(revealElements).indexOf(el);
-          setTimeout(() => el.classList.add('visible'), index * 100);
-          observer.unobserve(el);
-        }
-      });
-    }, { threshold: 0.1 });
-    revealElements.forEach(el => revealObserver.observe(el));
-  }
+  /* ---------- 2. Reveal on scroll with staggered delay ---------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const index = parseInt(el.dataset.revealIndex, 10) || 0;
+        setTimeout(() => el.classList.add('visible'), index * 100);
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15 });
 
-  /* ---------- 3. Navbar shrink, blur, hide on scroll down / show on scroll up ---------- */
-  const nav = document.querySelector('.glass-nav');
+  revealEls.forEach((el, i) => {
+    el.dataset.revealIndex = i;
+    revealObserver.observe(el);
+  });
+
+  /* ---------- 3. Navbar shrink, blur & hide/show on scroll ---------- */
+  const header = document.querySelector('.glass-nav');
   let lastScrollY = window.scrollY;
-  const SCROLL_THRESHOLD = 80;
+  const navScrollHandler = () => {
+    const curY = window.scrollY;
 
-  const handleNavScroll = () => {
-    const currentY = window.scrollY;
-
-    // shrink & blur after threshold
-    if (currentY > SCROLL_THRESHOLD) {
-      nav.classList.add('shrink', 'blur');
+    // shrink & blur after 80px
+    if (curY > 80) {
+      header.classList.add('shrink', 'blur');
     } else {
-      nav.classList.remove('shrink', 'blur');
+      header.classList.remove('shrink', 'blur');
     }
 
     // hide on scroll down, show on scroll up
-    if (currentY > lastScrollY && currentY > SCROLL_THRESHOLD) {
-      nav.classList.add('hidden');
+    if (curY > lastScrollY && curY > 120) {
+      header.classList.add('hidden');
     } else {
-      nav.classList.remove('hidden');
+      header.classList.remove('hidden');
     }
-
-    lastScrollY = currentY;
+    lastScrollY = curY;
   };
-  window.addEventListener('scroll', handleNavScroll);
+  window.addEventListener('scroll', navScrollHandler);
 
-  /* ---------- 4. Hamburger menu toggle (adds .open) ---------- */
+  /* ---------- 4. Hamburger menu toggle ---------- */
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
   if (hamburger && navLinks) {
@@ -66,114 +64,127 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- 5. Stat counters – count up when in view ---------- */
+  /* ---------- 5. Stat counters (count‑up on view) ---------- */
   const statNumbers = document.querySelectorAll('.stat-number');
-  const counterObserver = new IntersectionObserver((entries, observer) => {
+  const counterObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el = entry.target;
-        const target = +el.dataset.target || +el.textContent;
+        const target = parseInt(el.dataset.target, 10) || 0;
         const duration = 2000;
-        const start = performance.now();
+        const startTime = performance.now();
 
         const step = now => {
-          const progress = Math.min((now - start) / duration, 1);
+          const progress = Math.min((now - startTime) / duration, 1);
           el.textContent = Math.floor(progress * target);
           if (progress < 1) requestAnimationFrame(step);
           else el.textContent = target;
         };
         requestAnimationFrame(step);
-        observer.unobserve(el);
+        obs.unobserve(el);
       }
     });
   }, { threshold: 0.6 });
-  statNumbers.forEach(el => counterObserver.observe(el));
+
+  statNumbers.forEach(el => {
+    // ensure a numeric target is present
+    if (!el.dataset.target) el.dataset.target = el.textContent.trim().replace(/\D/g, '');
+    counterObserver.observe(el);
+  });
 
   /* ---------- 6. Gallery lightbox ---------- */
-  const galleryGrid = document.querySelector('.gallery-grid');
-  if (galleryGrid) {
-    const images = Array.from(galleryGrid.querySelectorAll('img'));
-    const overlay = document.createElement('div');
-    overlay.className = 'lightbox-overlay';
-    overlay.innerHTML = `
-      <button class="lightbox-close" aria-label="Close">&times;</button>
-      <button class="lightbox-prev" aria-label="Previous">&#10094;</button>
-      <img class="lightbox-image" src="" alt="">
-      <button class="lightbox-next" aria-label="Next">&#10095;</button>
+  const gallery = document.getElementById('gallery');
+  if (gallery) {
+    // create lightbox elements once
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.style.cssText = `
+      position:fixed; inset:0; background:rgba(0,0,0,0.85);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; visibility:hidden; transition:opacity .3s;
+      z-index:1000;
     `;
-    document.body.appendChild(overlay);
+    const img = document.createElement('img');
+    img.style.maxWidth = '90%';
+    img.style.maxHeight = '90%';
+    const btnPrev = document.createElement('button');
+    const btnNext = document.createElement('button');
+    const btnClose = document.createElement('button');
+    btnPrev.textContent = '‹';
+    btnNext.textContent = '›';
+    btnClose.textContent = '✕';
+    [btnPrev, btnNext, btnClose].forEach(b => {
+      b.style.cssText = `
+        position:absolute; background:none; border:none;
+        color:#fff; font-size:2rem; cursor:pointer;
+        padding:.5rem;
+      `;
+    });
+    btnPrev.style.left = '2%';
+    btnNext.style.right = '2%';
+    btnClose.style.top = '2%';
+    btnClose.style.right = '2%';
+    lightbox.append(img, btnPrev, btnNext, btnClose);
+    document.body.appendChild(lightbox);
 
-    const lightboxImg = overlay.querySelector('.lightbox-image');
-    const closeBtn = overlay.querySelector('.lightbox-close');
-    const prevBtn = overlay.querySelector('.lightbox-prev');
-    const nextBtn = overlay.querySelector('.lightbox-next');
-
-    let currentIndex = 0;
+    const images = Array.from(gallery.querySelectorAll('img'));
+    let currentIdx = 0;
 
     const openLightbox = idx => {
-      currentIndex = idx;
-      lightboxImg.src = images[currentIndex].src;
-      overlay.classList.add('active');
+      currentIdx = idx;
+      img.src = images[currentIdx].src;
+      lightbox.style.visibility = 'visible';
+      lightbox.style.opacity = '1';
     };
-
-    const closeLightbox = () => overlay.classList.remove('active');
-
+    const closeLightbox = () => {
+      lightbox.style.opacity = '0';
+      lightbox.addEventListener('transitionend', () => {
+        lightbox.style.visibility = 'hidden';
+      }, { once: true });
+    };
     const showPrev = () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      lightboxImg.src = images[currentIndex].src;
+      currentIdx = (currentIdx - 1 + images.length) % images.length;
+      img.src = images[currentIdx].src;
     };
     const showNext = () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      lightboxImg.src = images[currentIndex].src;
+      currentIdx = (currentIdx + 1) % images.length;
+      img.src = images[currentIdx].src;
     };
 
-    images.forEach((img, i) => {
-      img.style.cursor = 'pointer';
-      img.addEventListener('click', () => openLightbox(i));
+    images.forEach((image, i) => {
+      image.style.cursor = 'pointer';
+      image.addEventListener('click', () => openLightbox(i));
     });
-
-    closeBtn.addEventListener('click', closeLightbox);
-    prevBtn.addEventListener('click', showPrev);
-    nextBtn.addEventListener('click', showNext);
-    overlay.addEventListener('click', e => {
-      if (e.target === overlay) closeLightbox();
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', e => {
-      if (!overlay.classList.contains('active')) return;
-      if (e.key === 'Escape') closeLightbox();
-      else if (e.key === 'ArrowLeft') showPrev();
-      else if (e.key === 'ArrowRight') showNext();
-    });
+    btnPrev.addEventListener('click', e => { e.stopPropagation(); showPrev(); });
+    btnNext.addEventListener('click', e => { e.stopPropagation(); showNext(); });
+    btnClose.addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
+    lightbox.addEventListener('click', closeLightbox);
   }
 
-  /* ---------- 7. Booking form validation + success message ---------- */
+  /* ---------- 7. Booking form validation & success message ---------- */
   const bookingForm = document.querySelector('.booking-form');
   if (bookingForm) {
     const successMsg = document.createElement('div');
     successMsg.className = 'form-success';
-    successMsg.textContent = 'Your reservation has been submitted! We look forward to serving you.';
-    successMsg.style.opacity = '0';
-    successMsg.style.transition = 'opacity 0.5s ease';
-    bookingForm.parentNode.insertBefore(successMsg, bookingForm.nextSibling);
+    successMsg.textContent = 'Your reservation has been received! 🎉';
+    successMsg.style.cssText = `
+      opacity:0; transition:opacity .5s; color:var(--primary);
+      margin-top:1rem; text-align:center;
+    `;
+    bookingForm.appendChild(successMsg);
 
     bookingForm.addEventListener('submit', e => {
       e.preventDefault();
-
-      // Use built‑in HTML validation first
+      // native HTML5 validation
       if (!bookingForm.checkValidity()) {
         bookingForm.reportValidity();
         return;
       }
-
-      // Simulate async submission (e.g., fetch) – here just a timeout
+      // simulate async submission (e.g., fetch) – here just a timeout
       setTimeout(() => {
-        bookingForm.reset();
         successMsg.style.opacity = '1';
-        // Fade out after 3 seconds
-        setTimeout(() => (successMsg.style.opacity = '0'), 3000);
-      }, 500);
+        bookingForm.reset();
+      }, 300);
     });
   }
 });
