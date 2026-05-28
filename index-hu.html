@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baskien pizzéria</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Ragadós üveg morfizmus navigáció -->
+    <header class="sticky-nav">
+        <nav class="glass-nav">
+            <div class="logo">Baskien pizzéria</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Kezdőlap</a></li>
+                <li><a href="#services">Étlap</a></li>
+                <li><a href="#about">Rólunk</a></li>
+                <li><a href="#booking">Asztalfoglalás</a></li>
+                <li><a href="#gallery">Galéria</a></li>
+                <li><a href="#faq">Gyakori kérdések</a></li>
+                <li><a href="#team">Csapat</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#shop">Bolt</a></li>
+                <li><a href="#contact">Kapcsolat</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hős szakasz -->
+    <section id="hero" class="hero-section">
+        <div class="hero-bg" style="background-image:url('https://loremflickr.com/1600/900/pizza');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Köszöntjük a Baskien pizzériában</h1>
+            <p>Szenvedélyből készült, hiteles pizza.</p>
+            <div class="hero-buttons">
+                <a href="#booking" class="pill-button">Asztalfoglalás</a>
+                <a href="#services" class="pill-button">Étlap megtekintése</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Szolgáltatások / Étlap szakasz -->
+    <section id="services" class="services-section">
+        <h2>Pizzaválasztékunk</h2>
+        <div class="services-grid">
+            <article class="service-card">
+                <img src="https://loremflickr.com/400/280/pizza" alt="Klasszikus Margherita">
+                <h3>Klasszikus Margherita</h3>
+                <p>Friss paradicsom szósz, mozzarella és bazsalikom.</p>
+                <p class="price">9,99 font</p>
+            </article>
+            <article class="service-card">
+                <img src="https://loremflickr.com/400/280/pizza" alt="Pepperoni élvezet">
+                <h3>Pepperoni élvezet</h3>
+                <p>Csípős pepperoni, mozzarella és paradicsom alap.</p>
+                <p class="price">11,99 font</p>
+            </article>
+            <article class="service-card">
+                <img src="https://loremflickr.com/400/280/pizza" alt="Vegetárius szuprém">
+                <h3>Vegetárius szuprém</h3>
+                <p>Kevert zöldség, olajbogyó és mozzarella.</p>
+                <p class="price">10,99 font</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Rólunk szakasz -->
+    <section id="about" class="about-section">
+        <h2>Rólunk</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>A Baskien pizzériában hiszünk a pizzakészítés művészetében. Tésztánkat kézzel nyújtjuk, szószainkat órákig főzzük, és feltéteinket helyi farmokról szerzem meg. Akár egy gyors szeletet, akár egy családi lakomát keresel, mi fedezzük.</p>
+                <p>Gyere és tapaszd meg a fahéjas sütők melegét és a barátságos hangulatot, amely minden látogatást különlegessé tesz.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://loremflickr.com/700/500/pizza" alt="Pizzasütő">
+            </div>
+        </div>
+    </section>
+
+    <!-- Asztalfoglalás / Időpontfoglalás szakasz -->
+    <section id="booking" class="booking-section">
+        <h2>Asztalfoglalás</h2>
+        <form class="booking-form">
+            <label>
+                Név
+                <input type="text" name="name" placeholder="Teljes név" required>
+            </label>
+            <label>
+                E-mail
+                <input type="email" name="email" placeholder="példa@email.hu" required>
+            </label>
+            <label>
+                Telefonszám
+                <input type="tel" name="phone" placeholder="06-1-123-4567">
+            </label>
+            <label>
+                Dátum
+                <input type="date" name="date" required>
+            </label>
+            <label>
+                Idő
+                <input type="time" name="time" required>
+            </label>
+            <label>
+                Vendégek
+                <input type="number" name="guests" min="1" max="20" placeholder="Vendégek száma" required>
+            </label>
+            <button type="submit">Foglalás</button>
+        </form>
+    </section>
+
+    <!-- Fotógaléria szakasz -->
+    <section id="gallery" class="gallery-section">
+        <h2>Fotógaléria</h2>
+        <div class="gallery-grid">
+            <img src="https://loremflickr.com/600/400/pizza" alt="Galéria kép 1">
+            <img src="https://loremflickr.com/600/400/pizza" alt="Galéria kép 2">
+            <img src="https://loremflickr.com/600/400/pizza" alt="Galéria kép 3">
+            <img src="https://loremflickr.com/600/400/pizza" alt="Galéria kép 4">
+            <img src="https://loremflickr.com/600/400/pizza" alt="Galéria kép 5">
+            <img src="https://loremflickr.com/600/400/pizza" alt="Galéria kép 6">
+        </div>
+    </section>
+
+    <!-- Gyakori kérdések szakasz -->
+    <section id="faq" class="faq-section">
+        <h2>Gyakori kérdések</h2>
+        <dl>
+            <dt>Van gluténmentes tészta választás?</dt>
+            <dd>Igen, van gluténmentes opció kérésre.</dd>
+
+            <dt>Lehet-e ételt rendelni házhoz szállítással?</dt>
+            <dd>Helyi szállítási szolgáltatásokkal működünk együtt. Kérjük, hívjon minket a részletekért.</dd>
+
+            <dt>Mikor vagyunk nyitva?</dt>
+            <dd>Hétfő – Csütörtök: 12:00 – 22:00<br>Péntek – Szombat: 12:00 – 23:00<br>Vasárnap: 14:00 – 21:00</dd>
+        </dl>
+    </section>
+
+    <!-- Vélemények szakasz -->
+    <section id="testimonials" class="testimonials-section">
+        <h2>Ügyfeleink véleménye</h2>
+        <div class="testimonials-grid">
+            <article class="testimonial-card">
+                <p>„A Margherita a legjobb, amit valaha kóstoltam – egyszerű, mégis tökéletes.”</p>
+                <cite>– Emma R.</cite>
+            </article>
+            <article class="testimonial-card">
+                <p>„Csodálatos családi este. A személyzet barátságos, a pizza pedig remek.”</p>
+                <cite>– James T.</cite>
+            </article>
+            <article class="testimonial-card">
+                <p>„Imádom a fahéjas ízt – hiteles és finom.”</p>
+                <cite>– Priya S.</cite>
+            </article>
+        </div>
+    </section>
+
+    <!-- Hírlevél feliratkozás szakasz -->
+    <section id="newsletter" class="newsletter-section">
+        <h2>Maradjon kapcsolatban</h2>
+        <form class="newsletter-form">
+            <label>
+                E-mail cím
+                <input type="email" name="newsletter-email" placeholder="példa@email.hu" required>
+            </label>
+            <button type="submit">Feliratkozás</button>
+        </form>
+    </section>
+
+    <!-- Térkép és útvonal szakasz -->
+    <section id="map" class="map-section">
+        <h2>Találjon meg minket</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d0!3d0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z0JzQvtC70YzQutC40Lkg0L7QsdC70LjRjw!5e0!3m2!1sen!2suk!4v1" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <!-- Árlista szakasz -->
+    <section id="pricing" class="pricing-section">
+        <h2>Árlista</h2>
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th>Pizza</th>
+                    <th>Méret</th>
+                    <th>Ár</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Klasszikus Margherita</td>
+                    <td>Kicsi (30cm)</td>
+                    <td>9,99 font</td>
+                </tr>
+                <tr>
+                    <td>Klasszikus Margherita</td>
+                    <td>Nagy (40cm)</td>
+                    <td>12,99 font</td>
+                </tr>
+                <tr>
+                    <td>Pepperoni élvezet</td>
+                    <td>Kicsi (30cm)</td>
+                    <td>11,99 font</td>
+                </tr>
+                <tr>
+                    <td>Pepperoni élvezet</td>
+                    <td>Nagy (40cm)</td>
+                    <td>14,99 font</td>
+                </tr>
+                <tr>
+                    <td>Vegetárius szuprém</td>
+                    <td>Nagy (40cm)</td>
+                    <td>13,99 font</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Csapat / Dolgozók szakasz -->
+    <section id="team" class="team-section">
+        <h2>Ismerje meg csapatunkat</h2>
+        <div class="team-grid">
+            <article class="team-member">
+                <img src="https://loremflickr.com/300/300/pizza" alt="Főszakács">
+                <h3>Marco Rossi</h3>
+                <p>Főszakács – 15 éve a pizza mester.</p>
+            </article>
+            <article class="team-member">
+                <img src="https://loremflickr.com/300/300/pizza" alt="Menеджер">
+                <h3>Sophie Bennett</h3>
+                <p>Menеджер – Minden vendég érezze magát üdvözölve.</p>
+            </article>
+            <article class="team-member">
+                <img src="https://loremflickr.com/300/300/pizza" alt="Pincér">
+                <h3>Luke Patel</h3>
+                <p>Szenior pincér – Szenvedélyes a remek szolgáltatás iránt.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Blog / Hírek szakasz -->
+    <section id="blog" class="blog-section">
+        <h2>Legfrissebb hírek</h2>
+        <div class="blog-grid">
+            <article class="blog-post">
+                <h3>Új szezonális pizza bemutatkozása</h3>
+                <p>Bemutatjuk a korlátozott ideig kapható nyári pizzát, friss paradicsommal, bazsalikommal és mozzarellával.</p>
+                <a href="#" class="read-more">Tovább olvasom</a>
+            </article>
+            <article class="blog-post">
+                <h3>A kulisszák mögött: Fahéjas sütőnk</h3>
+                <p>Fedezze fel, hogyan adja meg a hiteles ízt minden pizzának a hagyományos sütőnk.</p>
+                <a href="#" class="read-more">Tovább olvasom</a>
+            </article>
+            <article class="blog-post">
+                <h3>Közösségi események</h3>
+                <p>Csatlakozzon hozzánk a jótékonysági estén – az eladott ételek egy része a helyi menhelyeket támogatja.</p>
+                <a href="#" class="read-more">Tovább olvasom</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- Akciók / Különleges ajánlatok szakasz -->
+    <section id="promotions" class="promotions-section">
+        <h2>Különleges ajánlatok</h2>
+        <ul class="offers-list">
+            <li>Vesd meg az egyiket, kapd meg a másikat ingyen – Klasszikus Margherita (minden kedden)</li>
+            <li>Családi lakoma – 2 nagy pizza + 4 ital 29,99 fontért</li>
+            <li>Diolák kedvezménye – 10% kedvezmény érvényes diákigazolvánnyal</li>
+        </ul>
+    </section>
+
+    <!-- Nyitvatartás szakasz -->
+    <section id="hours" class="hours-section">
+        <h2>Nyitvatartás</h2>
+        <table class="hours-table">
+            <tbody>
+                <tr><td>Hétfő – Csütörtök</td><td>12:00 – 22:00</td></tr>
+                <tr><td>Péntek – Szombat</td><td>12:00 – 23:00</td></tr>
+                <tr><td>Vasárnap</td><td>14:00 – 21:00</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Beágyazott YouTube csatorna -->
+    <section id="youtube" class="youtube-section">
+        <h2>YouTube csatornánk</h2>
+        <iframe width="100%" height="480" src="https://www.youtube.com/embed?listType=user_uploads&list=user-oh7ui8go9z" title="Baskien pizzéria YouTube videói" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+
+    <!-- Kapcsolat szakasz -->
+    <section id="contact" class="contact-section">
+        <h2>Kapcsolat</h2>
+        <div class="contact-grid">
+            <form class="contact-form">
+                <label>
+                    Név
+                    <input type="text" name="contact-name" placeholder="Név" required>
+                </label>
+                <label>
+                    E-mail
+                    <input type="email" name="contact-email" placeholder="példa@email.hu" required>
+                </label>
+                <label>
+                    Tárgy
+                    <input type="text" name="contact-subject" placeholder="Tárgy" required>
+                </label>
+                <label>
+                    Üzenet
+                    <textarea name="contact-message" placeholder="Üzenet" rows="5" required></textarea>
+                </label>
+                <button type="submit">Küldés</button>
+            </form>
+            <div class="contact-details">
+                <p><strong>Telefonszám:</strong> 06-1-123-4567</p>
+                <p><strong>E-mail:</strong> info@baskienpizzaria.hu</p>
+                <p><strong>Cím:</strong> 12 Pizza utca, Ételváros, 1234</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lábléc -->
+    <footer class="footer-section">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Rólunk</h3>
+                <p>Családi vállalkozás, hiteles ízekkel.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Gyors linkek</h3>
+                <ul>
+                    <li><a href="#services">Étlap</a></li>
+                    <li><a href="#booking">Asztalfoglalás</a></li>
+                    <li><a href="#gallery">Galéria</a></li>
+                    <li><a href="#contact">Kapcsolat</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Kövessen minket</h3>
+                <ul class="social-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-copy">&copy; 2026 Baskien pizzéria. Minden jog fenntartva.</p>
+    </footer>
+</body>
+</html>
